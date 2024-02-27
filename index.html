@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Orang Berjalan</title>
+
+        <link href="bootstrap.css" rel="stylesheet" />
+
+        <style type="text/css">
+            body {
+                margin: 20px auto;
+            }z
+            .highlight {
+                background-color: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(86, 61, 124, 0.15);
+            }
+            #stage {
+                min-height: 250px;
+                background-image: url('background.png');
+                background-position-x: 10px;
+            }
+            .panah {
+                margin: 0 2em;
+            }
+            #orang {
+                height: 150px;
+            }
+        </style>
+    </head>
+    <h1>CONTOH ANIMASI BERJALAN</h1>
+
+    <body>
+        <div id="stage" class="d-flex justify-content-center align-items-end highlight">
+            <div id="sprite">
+                <img id="orang" src="kanan1.png" />
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="panah"><a href="#" class="btn btn-outline-primary" id="panah-kiri">&lAarr;</a></div>
+            <div class="panah"><a href="#" class="btn btn-outline-primary" id="panah-kanan">&rAarr;</a></div>
+        </div>
+<script src="jquery.js"></script> 
+<script >
+  $(document).ready(function() {
+    var langkahkanan = 1;
+    var langkahkiri = 1;
+    var posisiBackground = 10;
+    var jumlahLangkah = 4;
+    $(this).keydown(function(event) {
+      if (event.keyCode == 39) {
+        langkahkanan++;
+        posisiBackground = posisiBackground - 8;
+        if (langkahkanan == jumlahLangkah) {
+          langkahkanan = 1;
+        }
+        $('#orang').attr('src', 'kanan' + langkahkanan + '.png');
+        $('#stage').css('background-position-x', posisiBackground);
+      }
+      if (event.keyCode == 37) {
+        langkahkiri++;
+        posisiBackground = posisiBackground + 8;
+        if (langkahkiri == jumlahLangkah) {
+          langkahkiri = 1;
+        }
+        $('#orang').attr('src', 'kiri' + langkahkiri + '.png');
+        $('#stage').css('background-position-x', posisiBackground);
+      }
+    });
+    $('#panah-kanan').click(function() {
+      langkahkanan++;
+      posisiBackground = posisiBackground - 8;
+      if (langkahkanan == jumlahLangkah) {
+        langkahkanan = 1;
+      }
+      $('#orang').attr('src', 'kanan' + langkahkanan + '.png');
+      $('#stage').css('background-position-x', posisiBackground);
+    });
+    $('#panah-kiri').click(function() {
+      langkahkiri++;
+      posisiBackground = posisiBackground + 8;
+      if (langkahkiri == jumlahLangkah) {
+        langkahkiri = 1;
+      }
+      $('#orang').attr('src', 'kiri' + langkahkiri + '.png');
+      $('#stage').css('background-position-x', posisiBackground);
+    });
+  });
+</script>
+</body>
+</html>
